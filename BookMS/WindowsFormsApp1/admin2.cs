@@ -19,6 +19,8 @@ namespace WindowsFormsApp1
 
         private void admin2_Load(object sender, EventArgs e)
         {
+            Tabel();
+            label2.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
 
         }
 
@@ -42,5 +44,68 @@ namespace WindowsFormsApp1
             dao.DaoClose();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            admin21 a = new admin21();
+            a.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();//获取书号
+                label2.Text = id + dataGridView1.SelectedRows[0] .Cells[1].Value.ToString();
+                DialogResult dr = MessageBox.Show("确认删除吗？", "信息提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dr == DialogResult.OK)
+                {
+                    string sql = $"delete from t_book where id = '{id}'";
+                    Dao dao = new Dao();
+                    if (dao.Execute(sql) > 0)
+                    {
+                        MessageBox.Show("删除失败");
+                        Tabel();
+                    }
+                    else
+                    {
+                        MessageBox.Show("删除失败" + sql);
+                    }
+                    dao.DaoClose();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("请先在表格中选中要删除的图书记录", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void dataGridview_Click(object sender,EventArgs e)
+        {
+            label2.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                string name = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                string author = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                string press = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                string number = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                admin22 admin = new admin22(id,name,author,press,number);
+                admin.ShowDialog();
+                Tabel();
+
+            }
+            catch
+            {
+                MessageBox.Show("ERROR");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("刷新");
+        }
     }
 }

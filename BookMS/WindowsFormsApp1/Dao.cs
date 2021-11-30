@@ -7,7 +7,7 @@ namespace WindowsFormsApp1
         SqlConnection sc;
         public SqlConnection connect()
         {
-            string str = @"Data Source=LAPTOP-5290VHVE;Initial Catalog = BookDB ; Intergrated Security = True";
+            string str = @"Data Source=LAPTOP-5290VHVE;Initial Catalog = BookDB ; integrated security = True";
              sc = new SqlConnection(str);
             sc.Open();
             return sc;

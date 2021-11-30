@@ -10,3 +10,5 @@ D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\BookMS.csproj.Ge
 D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\BookMS.csproj.CoreCompileInputs.cache
 D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.admin22.resources
+D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.login.resources
