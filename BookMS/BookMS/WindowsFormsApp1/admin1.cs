@@ -32,5 +32,15 @@ namespace WindowsFormsApp1
              admin2 a = new admin2();
             a.ShowDialog();
         }
+
+        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void 帮助ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("欢迎管理员");
+        }
     }
 }

@@ -38,14 +38,21 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string no = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            string id = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-            string sql = $"delete from t_lend where [no]={no};update t_book set number=number+1 where id='{id}'";
-            Dao dao = new Dao();
-            if (dao.Execute(sql) > 1)
+            try
             {
-                MessageBox.Show("归还成功！");
-                Table();
+                string no = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                string id = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                string sql = $"delete from t_lend where [no]={no};update t_book set number=number+1 where id='{id}'";
+                Dao dao = new Dao();
+                if (dao.Execute(sql) > 1)
+                {
+                    MessageBox.Show("归还成功！");
+                    Table();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("没有需要归还的图书");
             }
         }
     }
