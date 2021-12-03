@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,6 +54,18 @@
     </Compile>
     <Compile Include="admin1.Designer.cs">
       <DependentUpon>admin1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="admin11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin11.Designer.cs">
+      <DependentUpon>admin11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="admin12.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin12.Designer.cs">
+      <DependentUpon>admin12.cs</DependentUpon>
     </Compile>
     <Compile Include="admin2.cs">
       <SubType>Form</SubType>
@@ -80,14 +95,32 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="user2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user2.Designer.cs">
+      <DependentUpon>user2.cs</DependentUpon>
+    </Compile>
     <Compile Include="user1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="user1.Designer.cs">
       <DependentUpon>user1.cs</DependentUpon>
     </Compile>
+    <Compile Include="user3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user3.Designer.cs">
+      <DependentUpon>user3.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="admin1.resx">
       <DependentUpon>admin1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin11.resx">
+      <DependentUpon>admin11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin12.resx">
+      <DependentUpon>admin12.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="admin2.resx">
       <DependentUpon>admin2.cs</DependentUpon>
@@ -110,6 +143,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="user2.resx">
+      <DependentUpon>user2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user1.resx">
+      <DependentUpon>user1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user3.resx">
+      <DependentUpon>user3.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

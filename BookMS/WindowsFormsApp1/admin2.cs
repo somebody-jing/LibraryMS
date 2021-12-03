@@ -20,13 +20,14 @@ namespace WindowsFormsApp1
         private void admin2_Load(object sender, EventArgs e)
         {
             Tabel();
-            label2.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            //label2.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
 
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            Tabel();
+            //label2.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
         }
         //从数据库读取数据显示在表格控件中
         public void Tabel()
@@ -35,15 +36,41 @@ namespace WindowsFormsApp1
             Dao dao = new Dao();
             string sql = "select * from t_book";
             IDataReader dc = dao.read(sql);
-            while (dc.Read())
+            while (dc.Read())//图书的添加
             {
-                dataGridView1.Rows.Add(dc[0].ToString(), dc[1].ToString(), dc[2].ToString(), dc[3].ToString());
+                dataGridView1.Rows.Add(dc[0].ToString(), dc[1].ToString(), dc[2].ToString(), dc[3].ToString(),dc[4].ToString());
 
             }
             dc.Close();
             dao.DaoClose();
         }
-
+        // 书号查询
+        public void TableID()
+        {
+            dataGridView1.Rows.Clear();//清空数据
+            Dao dao = new Dao();
+            string sql = $"select * from t_book where id='{textBox1.Text}'";
+            IDataReader dc = dao.read(sql);
+            while (dc.Read())
+            {
+                dataGridView1.Rows.Add(dc[0].ToString(), dc[1].ToString(), dc[2].ToString(), dc[3].ToString(), dc[4].ToString());
+            }
+            dc.Close();
+            dao.DaoClose();
+        }
+        public void TableName()
+        {
+            dataGridView1.Rows.Clear();//清空数据
+            Dao dao = new Dao();
+            string sql = $"select * from t_book where name like'%{textBox2.Text}%'";
+            IDataReader dc = dao.read(sql);
+            while (dc.Read())
+            {
+                dataGridView1.Rows.Add(dc[0].ToString(), dc[1].ToString(), dc[2].ToString(), dc[3].ToString(), dc[4].ToString());
+            }
+            dc.Close();
+            dao.DaoClose();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             admin21 a = new admin21();
@@ -55,7 +82,7 @@ namespace WindowsFormsApp1
             try
             {
                 string id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();//获取书号
-                label2.Text = id + dataGridView1.SelectedRows[0] .Cells[1].Value.ToString();
+                //label2.Text = id + dataGridView1.SelectedRows[0] .Cells[1].Value.ToString();
                 DialogResult dr = MessageBox.Show("确认删除吗？", "信息提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (dr == DialogResult.OK)
                 {
@@ -63,7 +90,7 @@ namespace WindowsFormsApp1
                     Dao dao = new Dao();
                     if (dao.Execute(sql) > 0)
                     {
-                        MessageBox.Show("删除失败");
+                        MessageBox.Show("删除成功");
                         Tabel();
                     }
                     else
@@ -80,7 +107,7 @@ namespace WindowsFormsApp1
         }
         private void dataGridview_Click(object sender,EventArgs e)
         {
-            label2.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            //label2.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -88,10 +115,10 @@ namespace WindowsFormsApp1
             try
             {
                 string id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                string name = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                string author = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                string press = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                string number = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                string name = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                string author = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                string press = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                string number = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
                 admin22 admin = new admin22(id,name,author,press,number);
                 admin.ShowDialog();
                 Tabel();
@@ -106,6 +133,42 @@ namespace WindowsFormsApp1
         private void button4_Click(object sender, EventArgs e)
         {
             MessageBox.Show("刷新");
+            Tabel();
+            textBox1.Text = "";
+            textBox2.Text = "";
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            TableID();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            TableName();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            int n = dataGridView1.SelectedRows.Count;//获取选中行数
+            string sql = $"delete from t_book where id in(";
+            for (int i = 0; i < n; i++)
+            {
+                sql += $"'{dataGridView1.SelectedRows[i].Cells[1].Value.ToString()}',";
+            }
+            sql = sql.Remove(sql.Length - 1);//删除最后一个字符
+            sql += ")";
+            Dao dao = new Dao();
+            if (dao.Execute(sql) > n - 1)
+            {
+                MessageBox.Show($"成功删除{n}条图书信息");
+                Tabel();
+            }
         }
     }
 }

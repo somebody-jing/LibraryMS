@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
         public admin22(string id ,string name,string author ,string press ,string  number )
         {
             InitializeComponent();
-            textBox1.Text = id;
+            ID=textBox1.Text = id;
             textBox2.Text = name;
             textBox3.Text = author;
             textBox4.Text = press;
@@ -35,13 +35,25 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string sql = $"update t_book set id='{textBox1.Text}',[name]='{textBox2.Text}',author='{textBox3.Text}',press='{textBox4.Text}',number='{textBox1.Text}' where id='{ID}'";
-            Dao dao = new Dao();
-            if (dao.Execute(sql)>0)
+            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "")
             {
-                MessageBox.Show("修改成功");
-                this.Close();
+                string sql = $"update t_book set id='{textBox1.Text}',[name]='{textBox2.Text}',author='{textBox3.Text}',press='{textBox4.Text}',number={textBox5.Text} where id='{ID}'";
+                Dao dao = new Dao();
+                if (dao.Execute(sql) > 0)
+                {
+                    MessageBox.Show("修改成功");
+                    this.Close();
+                }
             }
+            else
+            {
+                MessageBox.Show("图书信息不能为空");
+            }
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -34,23 +34,30 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Dao dao = new Dao();
-            string sql = $"insert into t_book values('{textBox1.Text}','{textBox2.Text}','{textBox3.Text}','{textBox4.Text}',{textBox5.Text})";
-         int n=  dao.Execute(sql);
-            if(n>0)
+            if (textBox1.Text!= "" && textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "")
             {
-                MessageBox.Show("添加成功");
+                Dao dao = new Dao();
+                string sql = $"insert into t_book values('{textBox1.Text}','{textBox2.Text}','{textBox3.Text}','{textBox4.Text}',{textBox5.Text})";
+                int n = dao.Execute(sql);
+                if (n > 0)
+                {
+                    MessageBox.Show("添加成功");
 
+                }
+                else
+                {
+                    MessageBox.Show("添加失败");
+                }
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
             }
             else
             {
-                MessageBox.Show("添加失败");
+                MessageBox.Show("图书信息不能为空");
             }
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
 
 
 
@@ -68,6 +75,12 @@ namespace WindowsFormsApp1
             textBox3.Text = "";
             textBox4.Text = "";
             textBox5.Text = "";
+            this.Close();
+        }
+
+        private void admin21_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

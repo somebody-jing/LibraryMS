@@ -24,7 +24,6 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("点击了登录");
             if (textBox1.Text != "" && textBox2.Text != "")
             {
                 Login();
@@ -36,7 +35,6 @@ namespace WindowsFormsApp1
         }
 		public void Login()
 		{
-			MessageBox.Show("登录中");
 			//用户
 			if (radioButtonUser.Checked == true)
 			{
@@ -86,8 +84,22 @@ namespace WindowsFormsApp1
 				}
 				dao.DaoClose();
 			}
-			MessageBox.Show("请选则单选框");
+			//MessageBox.Show("请选则单选框");
 		}
 
-	}
+        private void button2_Click(object sender, EventArgs e)
+        {
+			this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButtonAdmin_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

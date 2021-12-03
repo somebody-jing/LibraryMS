@@ -12,3 +12,8 @@ D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\WindowsFormsApp1
 D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.admin22.resources
 D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.login.resources
+D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.user2.resources
+D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.user1.resources
+D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.user3.resources
+D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.admin11.resources
+D:\大三上\数据库\BookMS\BookMS\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.admin12.resources
